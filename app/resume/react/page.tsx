@@ -7,8 +7,7 @@ export default function Page() {
       I&apos;ve used React + rxjs professionally at <Link className="link-text" href="https://encircleapp.com">Encircle</Link> to build new features and maintain existing ones.
     </p>
     <p>
-      { /* TODO: Add link to this website&apos;s source code */ }
-      I&apos;ve used it with NextJS to make this website.
+      I&apos;ve used it with the NextJS framework to make <Link className="link-text" href="https://github.com/quinn-n/Personal-Site">this website</Link>.
     </p>
   </SkillPage>;
 }
