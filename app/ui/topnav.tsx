@@ -1,7 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import React from "react";
+
 import { shouldHighlightLink } from "@/app/ui/should-highlight";
 
 const NAV_LINKS = [
@@ -11,9 +13,11 @@ const NAV_LINKS = [
 ];
 
 export function TopNav({ className, ...otherProps }: React.ComponentProps<"div">) {
+  const pathname = usePathname();
+
   return <div className={`flex flex-row justify-center space-x-6 bg-gray-900 h-full ${className}`} {...otherProps}>
     {NAV_LINKS.map((navLink, index) => {
-      return <NavLink path={navLink.path} label={navLink.label} highlight={shouldHighlightLink(navLink.path, 1)} key={index}/>;
+      return <NavLink path={navLink.path} label={navLink.label} highlight={shouldHighlightLink(pathname, navLink.path, 1)} key={index}/>;
     })}
   </div>;
 }

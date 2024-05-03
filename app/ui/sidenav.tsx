@@ -1,13 +1,16 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { shouldHighlightLink } from "@/app/ui/should-highlight";
 
 export function SideNav(props: { navLinks: { path: string, label: string }[] } ) {
+  const pathname = usePathname();
+
   return <div className="bg-gray-900">
     {
       props.navLinks.map((navLink, index) => {
-        return <NavLink path={navLink.path} label={navLink.label} highlight={shouldHighlightLink(navLink.path, 2)} key={index}/>;
+        return <NavLink path={navLink.path} label={navLink.label} highlight={shouldHighlightLink(pathname, navLink.path, 2)} key={index}/>;
       })
     }
   </div>;
