@@ -5,8 +5,8 @@ import Link from "next/link";
 export default function Page() {
   return <SkillPage professionalExperience={2} personalExperience={7} pluralsightIQ={221}>
     <p>
-      I've used Python professionally to build private and public REST APIs with Tornado and SQLAlchemy.
-      I've used it for a huge number of personal projects and scripts, from&nbsp;
+      I&apos;ve used Python professionally to build private and public REST APIs with Tornado and SQLAlchemy.
+      I&apos;ve used it for a huge number of personal projects and scripts, from&nbsp;
       <Link className="link-text" href="https://github.com/quinn-n/pip-search">small(ish) but useful scripts</Link>
       , to <Link className="link-text" href="https://github.com/quinn-n/worm">recreations of old games</Link>
       , to <Link className="link-text" href="https://github.com/quinn-n/NSFW_Detection_API">REST APIs written with FastAPI</Link>.

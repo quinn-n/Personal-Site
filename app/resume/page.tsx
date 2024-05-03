@@ -6,7 +6,7 @@ export default function Page() {
       <p>
         I am a self-taught software developer living in south-western Ontario.
         I know a variety of programming languages and do both full stack and embedded development.
-        I've worked as a full stack developer for two years for <Link className="link-text" href="https://encircleapp.com">Encircle</Link>.
+        I&apos;ve worked as a full stack developer for two years for <Link className="link-text" href="https://encircleapp.com">Encircle</Link>.
         I also do electrical engineering (aka dicking around with robots) and machine learning projects as a hobby.
       </p>
   
