@@ -11,5 +11,6 @@ const NAV_LINKS = [
   { path: "/resume", label: "Overview" },
   { path: "/resume/python", label: "Python" },
   { path: "/resume/react", label: "React" },
+  { path: "/resume/cplusplus", label: "C++" },
   { path: "/resume/more-to-come", label: "More to Come" }
 ];
