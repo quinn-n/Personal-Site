@@ -11,7 +11,12 @@ export default function Page() {
       , to <Link className="link-text" href="https://github.com/quinn-n/worm">recreations of old games</Link>
       , to <Link className="link-text" href="https://github.com/quinn-n/NSFW_Detection_API">REST APIs written with FastAPI</Link>.
     </p>
-    <div className="py-16 space-x-16 flex justify-start">
+    <div className="py-16 space-x-12 flex justify-start">
+      <Certification
+        title="Python Institute PCAP"
+        imageURL="/certifications/PCAP certificate.png"
+        link="https://verify.openedg.org/?id=Bb8u.Jb9E.Gxet"
+      />
       <Certification
         title="Python Institute PCEP"
         imageURL="/certifications/entry level python certificate.png"
