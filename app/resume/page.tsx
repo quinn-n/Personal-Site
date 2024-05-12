@@ -24,7 +24,7 @@ export default function Page() {
     </div>
 
     <p>
-      Hire me please :)
+      Looking for work :)
     </p>
   </div>
 }
