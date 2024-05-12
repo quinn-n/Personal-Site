@@ -1,3 +1,4 @@
+import { ExternalLink } from "@/app/ui/external-link"
 import { SkillPage } from "@/app/ui/resume/skill-page"
 
 export default function Page() {
@@ -9,10 +10,10 @@ export default function Page() {
       <p>
         I have some experience with frontend development. I did some frontend work using React, TypeScript,
         Less and some libraries like rxjs at&nbsp;
-        <a rel="noopener noreferrer" className="link-text" href="https://encircleapp.com">my last job</a>
+        <ExternalLink href="https://encircleapp.com">my last job</ExternalLink>
         , though I had a greater focus on the backend while I worked there.
         I&apos;ve been studying up on frontend development since, and I&apos;ve been working on&nbsp;
-        <a rel="noopener noreferrer" className="link-text" href="https://github.com/quinn-n/Personal-Site">this site</a>
+        <ExternalLink href="https://github.com/quinn-n/Personal-Site">this site</ExternalLink>
         &nbsp;which is built using the NextJS framework as a way to practice.
       </p>
       <p>

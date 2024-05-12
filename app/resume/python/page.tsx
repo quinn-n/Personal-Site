@@ -1,3 +1,4 @@
+import { ExternalLink } from "@/app/ui/external-link";
 import { Certification } from "@/app/ui/resume/certification";
 import { SkillPage } from "@/app/ui/resume/skill-page";
 
@@ -6,9 +7,9 @@ export default function Page() {
     <p>
       I&apos;ve used Python professionally to build private and public REST APIs with Tornado and SQLAlchemy.
       I&apos;ve used it for a huge number of personal projects and scripts, from&nbsp;
-      <a rel="noopener noreferrer" className="link-text" href="https://github.com/quinn-n/pip-search">small(ish) but useful scripts</a>
-      , to <a rel="noopener noreferrer" className="link-text" href="https://github.com/quinn-n/worm">recreations of old games</a>
-      , to <a rel="noopener noreferrer" className="link-text" href="https://github.com/quinn-n/NSFW_Detection_API">REST APIs written with FastAPI</a>.
+      <ExternalLink href="https://github.com/quinn-n/pip-search">small(ish) but useful scripts</ExternalLink>
+      , to <ExternalLink href="https://github.com/quinn-n/worm">recreations of old games</ExternalLink>
+      , to <ExternalLink href="https://github.com/quinn-n/NSFW_Detection_API">REST APIs written with FastAPI</ExternalLink>.
     </p>
     <div className="pt-16 space-x-12 flex justify-start">
       <Certification
