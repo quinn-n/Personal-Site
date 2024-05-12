@@ -14,7 +14,7 @@ export default function Page() {
         <p>I have helped bring new developers up to speed in the past.</p>
         <p>I have professional experience working in a collaborative SCRUM environment.</p>
       </div>
-  
+
       <p>
         For a quick overview of where I am with my skillset, check out my&nbsp;
         <Link className="link-text" href="https://app.pluralsight.com/profile/quinn-neufeld">
