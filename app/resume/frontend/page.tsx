@@ -1,5 +1,4 @@
 import { SkillPage } from "@/app/ui/resume/skill-page"
-import Link from "next/link"
 
 export default function Page() {
   return <SkillPage professionalExperience={2} personalExperience={3} pluralsightIQ={206} >
@@ -10,10 +9,10 @@ export default function Page() {
       <p>
         I have some experience with frontend development. I did some frontend work using React, TypeScript,
         Less and some libraries like rxjs at&nbsp;
-        <Link className="link-text" href="https://encircleapp.com">my last job</Link>
+        <a rel="noopener noreferrer" className="link-text" href="https://encircleapp.com">my last job</a>
         , though I had a greater focus on the backend while I worked there.
         I&apos;ve been studying up on frontend development since, and I&apos;ve been working on&nbsp;
-        <Link className="link-text" href="https://github.com/quinn-n/Personal-Site">this site</Link>
+        <a rel="noopener noreferrer" className="link-text" href="https://github.com/quinn-n/Personal-Site">this site</a>
         &nbsp;which is built using the NextJS framework as a way to practice.
       </p>
       <p>
