@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ExternalLink } from "../external-link";
+import { ExternalLink } from "@/app/ui/external-link";
 
 export function Certification(props: { link: string, imageURL: string, title?: string }) {
   return <div className="w-max h-max">

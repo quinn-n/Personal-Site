@@ -1,4 +1,4 @@
-import { BackgroundImage } from "./ui/background-image";
+import { BackgroundImage } from "@/app/ui/background-image";
 
 export default function Home() {
   return (
