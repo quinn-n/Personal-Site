@@ -1,6 +1,8 @@
 import type { Config } from "tailwindcss";
 
-type AddUtilitiesFn = (utilities: Record<string, Record<string, string>>) => void;
+type AddUtilitiesFn = (
+  utilities: Record<string, Record<string, string>>,
+) => void;
 
 const config: Config = {
   content: [
@@ -14,22 +16,20 @@ const config: Config = {
     },
   },
   plugins: [
-    function({ addUtilities }: { addUtilities: AddUtilitiesFn }) {
-      addUtilities(
-        {
-          ".link-text": {
-            "color": "rgb(59 130 246)",
-            "text-decoration": "underline",
-          },
-          ".border-box": {
-            "box-sizing": "border-box",
-          },
-          ".justify-between": {
-            "justify-content": "space-between",
-          },
-        }
-      );
-    }
+    ({ addUtilities }: { addUtilities: AddUtilitiesFn }) => {
+      addUtilities({
+        ".link-text": {
+          color: "rgb(59 130 246)",
+          "text-decoration": "underline",
+        },
+        ".border-box": {
+          "box-sizing": "border-box",
+        },
+        ".justify-between": {
+          "justify-content": "space-between",
+        },
+      });
+    },
   ],
 };
 export default config;
