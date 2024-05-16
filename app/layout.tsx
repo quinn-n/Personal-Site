@@ -1,14 +1,13 @@
-import React from "react";
+import { TopNav } from "@/app/ui/topnav";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import { TopNav } from "@/app/ui/topnav";
+import type React from "react";
 
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
-};
+export const metadata: Metadata = {};
 
 export default function RootLayout({
   children,
