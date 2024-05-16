@@ -20,5 +20,5 @@ export default function Page() {
       and can implement designs given to me. I would like to learn the basics of design one day so that I can make nice sites on my own
       but I have higher priorities right now.
     </p>
-  </SkillPage> 
+  </SkillPage>;
 }
