@@ -22,5 +22,5 @@ export default function Page() {
       to pass data between threads in Python, or trying to get tkinter to display opencv2 frames. Two things which sound really easy
       but are actually really frustrating.
     </p>
-  </SkillPage>
+  </SkillPage>;
 }
