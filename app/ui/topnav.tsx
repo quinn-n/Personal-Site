@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import React from "react";
+import { usePathname } from "next/navigation";
 
 import { shouldHighlightLink } from "@/app/ui/should-highlight";
 
@@ -12,6 +12,8 @@ const NAV_LINKS = [
   { path: "/side-projects", label: "Side Projects" },
 ];
 
+// https://github.com/jsx-eslint/eslint-plugin-react/issues/3284
+// eslint-disable-next-line react/prop-types
 export function TopNav({ className, ...otherProps }: React.ComponentProps<"div">) {
   const pathname = usePathname();
 
