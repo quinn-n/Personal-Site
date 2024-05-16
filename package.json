@@ -10,7 +10,9 @@
     "nextlint": "next lint",
     "format": "npx biome check --apply ./app/",
     "format-unsafe": "npx biome check --apply-unsafe ./app/",
-    "check": "npx biome check ./app/"
+    "check": "npx biome check ./app/",
+
+    "biome-ci": "npx biome ci ./app"
   },
   "dependencies": {
     "next": "14.1.4",
