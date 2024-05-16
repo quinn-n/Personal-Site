@@ -7,7 +7,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint --ignore-pattern .next/ --ignore-pattern eslint.config.*js .",
-    "nextlint": "next lint"
+    "nextlint": "next lint",
+    "format": "npx biome check --apply ./app/",
+    "format-unsafe": "npx biome check --apply-unsafe ./app/",
+    "check": "npx biome check ./app/"
   },
   "dependencies": {
     "next": "14.1.4",
@@ -15,6 +18,7 @@
     "react-dom": "^18"
   },
   "devDependencies": {
+    "@biomejs/biome": "^1.7.3",
     "@eslint/eslintrc": "^3.0.2",
     "@eslint/js": "^9.2.0",
     "@types/eslint": "^8.56.10",

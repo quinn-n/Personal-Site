@@ -1,5 +1,5 @@
-import React from "react";
 import { BackgroundImage } from "@/app/ui/background-image";
+import React from "react";
 
 export default function Home() {
   return (
