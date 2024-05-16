@@ -14,11 +14,11 @@ export default function Page() {
       before the match started. But all in all it was really fun and I learned a lot.
     </p>
     <p>
-      I've since taken up a few smaller personal projects in C++ and Python, including a&nbsp;
+      I&apos;ve since taken up a few smaller personal projects in C++ and Python, including a&nbsp;
       <ExternalLink href="https://github.com/quinn-n/Thermometer">thermometer which can change its target temperature depending on the time of day</ExternalLink>
       , and a <ExternalLink href="https://github.com/quinn-n/Helldivers-2-Strategem-Controller">custom input device for helldivers 2</ExternalLink>.
-      I've also been working on and off on a FOSS framework in Python for making robots with Raspberry Pis which communicate with a remote
-      driver's station over the internet, but that project is still in its infancy and not on Github yet. Feel free to ask me about trying
+      I&apos;ve also been working on and off on a FOSS framework in Python for making robots with Raspberry Pis which communicate with a remote
+      driver&apos;s station over the internet, but that project is still in its infancy and not on Github yet. Feel free to ask me about trying
       to pass data between threads in Python, or trying to get tkinter to display opencv2 frames. Two things which sound really easy
       but are actually really frustrating.
     </p>
