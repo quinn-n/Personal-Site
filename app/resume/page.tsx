@@ -1,3 +1,4 @@
+import React from "react";
 import { ExternalLink } from "@/app/ui/external-link";
 
 export default function Page() {

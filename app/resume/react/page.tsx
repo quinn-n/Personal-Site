@@ -1,3 +1,4 @@
+import React from "react";
 import { ExternalLink } from "@/app/ui/external-link";
 import { SkillPage } from "@/app/ui/resume/skill-page";
 

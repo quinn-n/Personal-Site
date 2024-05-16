@@ -1,3 +1,5 @@
+import React from "react";
+
 export function SkillPage(props: { children?: React.ReactNode, professionalExperience: number, personalExperience: number, pluralsightIQ?: number }) {
   return <div className="flex flex-col p-16 space-y-4">
     <div>

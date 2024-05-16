@@ -1,4 +1,5 @@
 import Image from "next/image";
+import React from "react";
 import { ExternalLink } from "@/app/ui/external-link";
 
 export function Certification(props: { link: string, imageURL: string, title?: string }) {
