@@ -9,7 +9,7 @@ export default function Page() {
       <ExternalLink href="https://tweaked.cc/">ComputerCraft</ExternalLink>
       , a Minecraft mod that adds programmable computers to the game. I&apos;ve long since lost the code for those projects, but I have&nbsp;
       <ExternalLink href="https://github.com/quinn-n/OpenComputers">some more recent Lua projects</ExternalLink>
-      &nbsp;written for a similar mod called <ExternalLink href="https://www.curseforge.com/minecraft/mc-mods/opencomputers">OpenComputers</ExternalLink>&nbsp;
+      &nbsp;written for a similar mod called <ExternalLink href="https://www.curseforge.com/minecraft/mc-mods/opencomputers">OpenComputers</ExternalLink>.
     </p>
   </SkillPage>;
 }
