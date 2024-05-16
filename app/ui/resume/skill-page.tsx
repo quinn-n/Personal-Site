@@ -5,7 +5,7 @@ export function SkillPage(props: { children?: React.ReactNode, professionalExper
       <h1>{props.personalExperience} years personal / hobbyist experience</h1>
       {props.pluralsightIQ? <h1>Pluralsight IQ of {props.pluralsightIQ}</h1> : undefined}
     </div>
-    <div>
+    <div className="flex flex-col space-y-4">
       {props.children}
     </div>
   </div>;
