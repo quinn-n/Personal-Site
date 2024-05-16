@@ -6,9 +6,12 @@ export function BackgroundImage() {
   const image = IMAGE_INFO[Math.floor(Math.random() * IMAGE_INFO.length)];
   const title = image.titles[Math.floor(Math.random() * image.titles.length)];
 
+  // NextJS's `Image` doesn't support CSS resizing.
+  /* eslint-disable @next/next/no-img-element */
   return <div className="flex justify-center items-center max-h-full max-w-full">
     <img src={image.url} title={title} alt={image.alt} className="object-contain max-h-full max-w-full"/>
   </div>;
+  /* eslint-enable @next/next/no-img-element */
 }
 
 const IMAGE_INFO: ImageInfo[] = [

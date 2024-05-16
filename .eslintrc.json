@@ -1,3 +1,8 @@
+// This file has to exist otherwise `next lint` explodes.
+// Thankfully eslint defaults to the new `eslint.config.*js` config.
+// Semi-related: https://github.com/vercel/next.js/discussions/59347
 {
-  "extends": "next/core-web-vitals"
+  "extends": [
+    "next"
+  ]
 }
