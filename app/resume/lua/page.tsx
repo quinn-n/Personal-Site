@@ -3,7 +3,7 @@ import { SkillPage } from "@/app/ui/resume/skill-page";
 
 export default function Page() {
   const date = new Date();
-  return <SkillPage personalExperience={2013 - date.getFullYear()} professionalExperience={0}>
+  return <SkillPage personalExperience={date.getFullYear() - 2013} professionalExperience={0}>
     <p>
       I first got into software development ~{date.getFullYear() - 2013} years ago writing Lua applications for&nbsp;
       <ExternalLink href="https://tweaked.cc/">ComputerCraft</ExternalLink>
