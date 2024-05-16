@@ -1,5 +1,5 @@
-name: Biome CI
-run-name: Biome CI ${{ github.ref_name }}
+name: Lint CI
+run-name: Lint CI ${{ github.ref_name }}
 on: [push]
 jobs:
   check-biome-ci:
@@ -11,3 +11,5 @@ jobs:
       - uses: actions/checkout@v4
       - run: npm install
       - run: npm run biome-ci
+      - run: npm run lint
+      - run: npm run nextlint
