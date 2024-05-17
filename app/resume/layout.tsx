@@ -22,5 +22,4 @@ const NAV_LINKS = [
   { path: "/resume/react", label: "React" },
   { path: "/resume/cplusplus", label: "C++" },
   { path: "/resume/lua", label: "Lua" },
-  { path: "/resume/more-to-come", label: "More to Come" },
 ];
