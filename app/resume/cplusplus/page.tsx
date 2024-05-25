@@ -7,7 +7,7 @@ export default function Page() {
     <SkillPage
       professionalExperience={0}
       personalExperience={5}
-      pluralsightIQ={123}
+      pluralsightIQ={173}
     >
       <p>
         I&apos;ve used C++ for a couple of personal projects, including a lot of
