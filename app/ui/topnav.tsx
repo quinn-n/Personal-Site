@@ -12,12 +12,11 @@ const NAV_LINKS = [
   { path: "/side-projects", label: "Side Projects" },
 ];
 
+type TopNavProps = { className?: string } & React.ComponentProps<"div">;
+
 // https://github.com/jsx-eslint/eslint-plugin-react/issues/3284
 // eslint-disable-next-line react/prop-types
-export function TopNav({
-  className,
-  ...otherProps
-}: React.ComponentProps<"div">) {
+export function TopNav({ className, ...otherProps }: TopNavProps) {
   const pathname = usePathname();
 
   return (

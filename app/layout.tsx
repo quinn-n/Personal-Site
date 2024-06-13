@@ -1,5 +1,6 @@
 import { TopNav } from "@/app/ui/topnav";
 import type { Metadata } from "next";
+
 import { Inter } from "next/font/google";
 import type React from "react";
 
