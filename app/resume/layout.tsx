@@ -1,4 +1,4 @@
-import { SideNav } from "@/app/ui/sidenav";
+import { type NavLink_T, SideNav } from "@/app/ui/sidenav";
 
 import type React from "react";
 
@@ -8,12 +8,14 @@ export default function Layout({
   return (
     <div className="flex flex-row justify-start h-full w-screen">
       <SideNav navLinks={NAV_LINKS} />
-      {children}
+      <div className="absolute top-8 bottom-0 left-0 right-0 h-max">
+        {children}
+      </div>
     </div>
   );
 }
 
-const NAV_LINKS = [
+const NAV_LINKS: NavLink_T[] = [
   { path: "/resume", label: "Overview" },
   { path: "/resume/backend", label: "Backend" },
   { path: "/resume/frontend", label: "Frontend" },
