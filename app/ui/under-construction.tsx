@@ -7,8 +7,8 @@ export function UnderConstruction() {
   const image = IMAGE_INFO[Math.floor(Math.random() * IMAGE_INFO.length)];
   const title = image.titles[Math.floor(Math.random() * image.titles.length)];
   return (
-    <div className="flex flex-col justify-start items-center w-full p-32">
-      <h1 className="text-4xl font-bold">Under Construction</h1>
+    <div className="flex flex-col justify-center items-center w-full p-16 sm:p-32">
+      <h1 className="text-4xl font-bold text-center">Under Construction</h1>
       <p className="text-lg">
         This page is under construction by a highly trained monkey
       </p>

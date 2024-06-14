@@ -3,7 +3,7 @@ import React from "react";
 
 export default function Page() {
   return (
-    <div className="flex flex-col justify-between p-16">
+    <div className="flex flex-col justify-between p-12 sm:p-16 h-full">
       <div className="flex flex-col space-y-4">
         <p>
           I am a self-taught software developer living in south-western Ontario.

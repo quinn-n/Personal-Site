@@ -7,7 +7,7 @@ export function SkillPage(props: {
   pluralsightIQ?: number;
 }) {
   return (
-    <div className="flex flex-col p-16 space-y-4">
+    <div className="flex flex-col p-12 sm:p-16 space-y-4">
       <div>
         <h1>{props.professionalExperience} years of professional experience</h1>
         <h1>{props.personalExperience} years personal / hobbyist experience</h1>
