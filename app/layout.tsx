@@ -20,7 +20,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <div className="flex flex-col h-screen w-screen">
           <TopNav className="h-max" />
-          <div className="flex justify-center items-center flex-grow flex-shrink">
+          <div className="flex justify-center items-center flex-grow">
             {children}
           </div>
         </div>

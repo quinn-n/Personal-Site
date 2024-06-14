@@ -21,7 +21,7 @@ export function TopNav({ className, ...otherProps }: TopNavProps) {
 
   return (
     <div
-      className={`flex flex-row justify-center space-x-6 bg-gray-900 h-full ${className}`}
+      className={`flex flex-row justify-center space-x-6 bg-gray-900 ${className}`}
       {...otherProps}
     >
       {NAV_LINKS.map((navLink, index) => {
