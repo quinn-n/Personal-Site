@@ -3,7 +3,7 @@ import React from "react";
 
 export default function Home() {
   return (
-    <main className="flex items-center justify-center flex-shrink">
+    <main className="h-full w-full p-8 sm:p-16">
       <BackgroundImage />
     </main>
   );
