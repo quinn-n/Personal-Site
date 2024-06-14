@@ -27,7 +27,7 @@ export default function Page() {
         </ExternalLink>
         .
       </p>
-      <div className="pt-16 space-x-12 flex justify-start">
+      <div className="pt-16 space-x-0 xl:space-x-12 space-y-12 xl:space-y-0 max-h-full max-w-full flex flex-col xl:flex-row items-center xl:items-start justify-start xl:justify-center">
         <Certification
           title="Python Institute PCAP"
           imageURL="/certifications/PCAP certificate.png"

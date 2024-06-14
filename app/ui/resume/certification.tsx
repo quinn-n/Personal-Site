@@ -8,7 +8,7 @@ export function Certification(props: {
   title?: string;
 }) {
   return (
-    <div className="w-max h-max">
+    <div className="w-max h-max max-w-full max-h-full">
       <ExternalLink href={props.link}>
         <Image
           src={props.imageURL}
