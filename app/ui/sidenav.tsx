@@ -55,7 +55,7 @@ export function SideNav(props: {
         </div>
       </div>
       <div
-        className={`fixed bottom-2 md:bottom-auto md:top-8 w-16 rounded-full duration-200 z-30 ${
+        className={`fixed bottom-2 md:bottom-auto md:top-8 w-11 sm:w-16 rounded-full duration-200 z-30 ${
           isSideNavOpen ? "left-32" : "left-2"
         }`}
       >
