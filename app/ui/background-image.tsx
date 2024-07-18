@@ -29,7 +29,7 @@ const IMAGE_INFO: ImageInfo[] = [
   {
     url: "/background-images/computer-cleaning.png",
     alt: "A computer being rinsed with a hose",
-    titles: ["Washing the bugs out"],
+    titles: ["Water cooled"],
   },
   {
     url: "/background-images/concerned-monero-chan.png",
