@@ -2,10 +2,10 @@
 
 import React from "react";
 
-export const SetEncryptionPasswordContext = React.createContext(
-  // Password is needed for type inference.
+export const AddEncryptionPasswordContext = React.createContext(
+  // `password` is needed for type inference.
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   (password: string): void => {
-    throw new Error("SetEncryptionPasswordContext not implemented");
+    throw new Error("AddEncryptionPasswordContext not implemented");
   },
 );

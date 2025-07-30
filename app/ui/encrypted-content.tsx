@@ -1,11 +1,17 @@
 "use client";
 
-import { SetEncryptionPasswordContext } from "@/app/context/encryption";
+import { AddEncryptionPasswordContext } from "@/app/context/encryption";
 import { cachedFetch } from "@/app/lib/networking";
 import { AES } from "encryption-for-node/lib/esm/AES.mjs";
 import React, { useState } from "react";
 
-type EncryptedContentProps = { encryptedSourceURL: string };
+export type Key_T = Buffer;
+
+type EncryptedContentProps = {
+  encryptedSourceURL: string;
+  keyList: Key_T[];
+  addKeyToList: (key: Key_T) => void;
+};
 
 type EncryptedBlobJson = {
   iv: Uint8Array;
@@ -14,31 +20,54 @@ type EncryptedBlobJson = {
   password_verification_plaintext: string;
 };
 
-// TODO: placeholder children?
 export function EncryptedContent({
   encryptedSourceURL,
+  keyList,
+  addKeyToList,
 }: EncryptedContentProps) {
   const [encryptionJson, setEncryptionJson] = useState<
     EncryptedBlobJson | undefined
   >(undefined);
-  const [aesKey, setAesKey] = useState<Buffer | undefined>(undefined);
-
   const [decryptedText, setDecryptedText] = useState<string | undefined>(
     undefined,
   );
 
   const [isPasswordIncorrect, setIsPasswordIncorrect] = useState(false);
 
-  function setEncryptionPassword(password: string) {
+  // Checks if the provided key matches the password verification
+  function checkKey(key: Buffer) {
+    // TODO: Save key until encryptionJson is set, then check key
+    if (!encryptionJson) return false;
+
+    const passwordVerificationText = decryptData(
+      Buffer.from(encryptionJson.password_verification_cipher_text, "base64"),
+      key,
+      Uint8Array.from(encryptionJson.iv),
+    ).toString();
+    return (
+      passwordVerificationText ===
+      encryptionJson.password_verification_plaintext
+    );
+  }
+
+  // Add key to the list if it is correct
+  function addPassword(password: string) {
     // Pad password to 32 bytes
     const paddedPassword = password.padEnd(32, " ");
-    setAesKey(Buffer.from(paddedPassword));
+    const key = Buffer.from(paddedPassword);
+    if (checkKey(key)) {
+      addKeyToList(key);
+    } else {
+      // Flash password box red if password is incorrect
+      setIsPasswordIncorrect(true);
+      setTimeout(() => setIsPasswordIncorrect(false), 1000);
+      // TODO: "Password Incorrect" modal
+    }
   }
 
   // Fetch encrypted blob
   if (!encryptionJson) {
     cachedFetch(encryptedSourceURL).then((response) => {
-      console.log("got status:", response.status);
       response.blob().then((blob) => {
         blob.text().then((text) => {
           setEncryptionJson(JSON.parse(text));
@@ -47,43 +76,50 @@ export function EncryptedContent({
     });
   }
 
-  // Decrypt blob
-  if (encryptionJson && aesKey && !decryptedText) {
-    const passwordVerificationText = decryptData(
-      Buffer.from(encryptionJson.password_verification_cipher_text, "base64"),
-      aesKey,
-      Uint8Array.from(encryptionJson.iv),
-    ).toString();
+  // Find the key for this blob from the key list
+  let thisAesKey: Key_T | undefined = undefined;
+  for (const key of keyList) {
+    if (checkKey(key)) {
+      thisAesKey = key;
+    }
+  }
 
-    // Verify password
-    if (
-      passwordVerificationText ===
-      encryptionJson.password_verification_plaintext
-    ) {
-      // Decrypt content if password is correct
-      const decryptedText = decryptData(
-        Buffer.from(encryptionJson.cipher_text, "base64"),
+  // Decrypt blob if we have the key & encrypted data.
+  if (encryptionJson && thisAesKey && !decryptedText) {
+    let key: Buffer | undefined = undefined;
+    for (const aesKey of keyList) {
+      const passwordVerificationText = decryptData(
+        Buffer.from(encryptionJson.password_verification_cipher_text, "base64"),
         aesKey,
         Uint8Array.from(encryptionJson.iv),
       ).toString();
+      if (
+        passwordVerificationText ===
+        encryptionJson.password_verification_plaintext
+      ) {
+        key = aesKey;
+        break;
+      }
+    }
 
-      console.log("Decrypted text: ", decryptedText);
+    // Verify password
+    if (key !== undefined) {
+      // Decrypt content if password is correct
+      const decryptedText = decryptData(
+        Buffer.from(encryptionJson.cipher_text, "base64"),
+        key,
+        Uint8Array.from(encryptionJson.iv),
+      ).toString();
+
       setDecryptedText(decryptedText);
-    } else {
-      // Flash password box red if password is incorrect
-      console.log("Password incorrect");
-      setIsPasswordIncorrect(true);
-      setAesKey(undefined);
-      setTimeout(() => setIsPasswordIncorrect(false), 1000);
-      // TODO: "Password Incorrect" modal
     }
   }
 
   if (!decryptedText) {
     return (
-      <SetEncryptionPasswordContext.Provider value={setEncryptionPassword}>
+      <AddEncryptionPasswordContext.Provider value={addPassword}>
         <PasswordBox isPasswordIncorrect={isPasswordIncorrect} />
-      </SetEncryptionPasswordContext.Provider>
+      </AddEncryptionPasswordContext.Provider>
     );
   }
 
@@ -108,7 +144,7 @@ function decryptData(buffer: Buffer, key: Buffer, iv: Uint8Array) {
 function PasswordBox({
   isPasswordIncorrect,
 }: { isPasswordIncorrect: boolean }) {
-  const setEncryptionPassword = React.useContext(SetEncryptionPasswordContext);
+  const addEncryptionPassword = React.useContext(AddEncryptionPasswordContext);
   const backgroundColor = isPasswordIncorrect ? "bg-red-600" : "";
   const hoverColor = isPasswordIncorrect ? "" : "hover:bg-gray-200";
   const placeholderText = isPasswordIncorrect
@@ -121,8 +157,7 @@ function PasswordBox({
       className={`border-2 border-gray-600 text-black text-center rounded-full w-full h-8 duration-150 ${backgroundColor} ${hoverColor}`}
       onKeyUp={(event) => {
         if (event.key === "Enter") {
-          console.log("Password entered: ", event.currentTarget.value);
-          setEncryptionPassword(event.currentTarget.value);
+          addEncryptionPassword(event.currentTarget.value);
         }
       }}
     />

@@ -1,6 +1,12 @@
-import { EncryptedContent } from "@/app/ui/encrypted-content";
+"use client";
+import { EncryptedContent, type Key_T } from "@/app/ui/encrypted-content";
+import { useState } from "react";
 
 export default function Page() {
+  const [keyList, setKeyList] = useState<Key_T[]>([]);
+  const addKeyToList = (key: Key_T) => {
+    setKeyList((prev) => [...prev, key]);
+  };
   return (
     <div className="flex flex-col items-center space-y-2 mx-2">
       <h1>Encryption Test</h1>
@@ -11,7 +17,22 @@ export default function Page() {
       <p>
         The password for the test file is `91SY):[QC|xKG~`pzj1R?No9wRsl)TNX`.
       </p>
-      <EncryptedContent encryptedSourceURL="/encrypted-content/test_encrypted.json" />
+      <EncryptedContent
+        encryptedSourceURL="/encrypted-content/test_encrypted.json"
+        keyList={keyList}
+        addKeyToList={addKeyToList}
+      />
+      <EncryptedContent
+        encryptedSourceURL="/encrypted-content/test_encrypted_2.json"
+        keyList={keyList}
+        addKeyToList={addKeyToList}
+      />
+      <p>The password for this file is `hello`.</p>
+      <EncryptedContent
+        encryptedSourceURL="/encrypted-content/odd_password_length.json"
+        keyList={keyList}
+        addKeyToList={addKeyToList}
+      />
     </div>
   );
 }
