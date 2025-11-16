@@ -86,16 +86,18 @@ export function EncryptedContent({
     }
   }
 
-  // Decrypt blob if we have the key & encrypted data.
-  if (encryptionJson && thisAesKey && !decryptedText) {
-    const plaintext = decryptData(
-      Buffer.from(encryptionJson.cipher_text, "base64"),
-      thisAesKey,
-      Uint8Array.from(encryptionJson.iv),
-    ).toString();
+  React.useEffect(() => {
+    // Decrypt blob if we have the key & encrypted data.
+    if (encryptionJson && thisAesKey && !decryptedText) {
+      const plaintext = decryptData(
+        Buffer.from(encryptionJson.cipher_text, "base64"),
+        thisAesKey,
+        Uint8Array.from(encryptionJson.iv),
+      ).toString();
 
-    setDecryptedText(plaintext);
-  }
+      setDecryptedText(plaintext);
+    }
+  }, [encryptionJson, thisAesKey, decryptedText]);
 
   if (!decryptedText) {
     return (
