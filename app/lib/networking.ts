@@ -3,7 +3,7 @@ interface CacheEntry {
   lastAccessed: number;
 }
 
-interface Cache extends Map<RequestInfo | URL, CacheEntry> {}
+type Cache = Map<RequestInfo | URL, CacheEntry>;
 
 const CACHE_DURATION = 1000 * 60 * 5; // 5 minutes
 
