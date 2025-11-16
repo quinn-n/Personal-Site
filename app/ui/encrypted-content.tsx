@@ -66,15 +66,17 @@ export function EncryptedContent({
   }
 
   // Fetch encrypted blob
-  if (!encryptionJson) {
-    cachedFetch(encryptedSourceURL).then((response) => {
-      response.blob().then((blob) => {
-        blob.text().then((text) => {
-          setEncryptionJson(JSON.parse(text));
+  React.useEffect(() => {
+    if (!encryptionJson) {
+      cachedFetch(encryptedSourceURL).then((response) => {
+        response.blob().then((blob) => {
+          blob.text().then((text) => {
+            setEncryptionJson(JSON.parse(text));
+          });
         });
       });
-    });
-  }
+    }
+  }, [encryptedSourceURL, encryptionJson]);
 
   // Find the key for this blob from the key list
   let thisAesKey: Key_T | undefined = undefined;
