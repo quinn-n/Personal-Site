@@ -49,15 +49,12 @@ const IMAGE_INFO: ImageInfo[] = [
   {
     url: "/background-images/frieren-burger.jpg",
     alt: "No burgers here!",
-    titles: [
-      "Mogu mogu",
-      "I definitely would've remembered seeing something like that",
-    ],
+    titles: ["Mogu mogu", "Me visiting bro's house and eating all of his food"],
   },
   {
     url: "/background-images/frieren-sleeping.jpg",
     alt: "Frieren sleeping",
-    titles: ["zzzzzz"],
+    titles: ["She's literally me"],
   },
   {
     url: "/background-images/frieren-staring-out-window.jpg",
@@ -72,7 +69,7 @@ const IMAGE_INFO: ImageInfo[] = [
   {
     url: "/background-images/gigachad-computer.jpg",
     alt: undefined,
-    titles: ["Haters will say it's photoshop", "He is literally me"],
+    titles: ["He is literally me"],
   },
   {
     url: "/background-images/monke-computer.jpg",
@@ -97,10 +94,7 @@ const IMAGE_INFO: ImageInfo[] = [
   {
     url: "/background-images/studying-man-made-horrors.jpg",
     alt: undefined,
-    titles: [
-      "It is important to stay up to date with the latest technologies",
-      "Reading is important, you know?",
-    ],
+    titles: ["Reading is important, you know?"],
   },
   {
     url: "/background-images/upside-down-cat.jpeg",
