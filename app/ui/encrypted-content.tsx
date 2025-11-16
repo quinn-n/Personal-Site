@@ -88,13 +88,13 @@ export function EncryptedContent({
 
   // Decrypt blob if we have the key & encrypted data.
   if (encryptionJson && thisAesKey && !decryptedText) {
-    const decryptedText = decryptData(
+    const plaintext = decryptData(
       Buffer.from(encryptionJson.cipher_text, "base64"),
       thisAesKey,
       Uint8Array.from(encryptionJson.iv),
     ).toString();
 
-    setDecryptedText(decryptedText);
+    setDecryptedText(plaintext);
   }
 
   if (!decryptedText) {
