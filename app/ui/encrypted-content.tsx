@@ -86,33 +86,13 @@ export function EncryptedContent({
 
   // Decrypt blob if we have the key & encrypted data.
   if (encryptionJson && thisAesKey && !decryptedText) {
-    let verifiedKey: Buffer | undefined = undefined;
-    for (const aesKey of keyList) {
-      const passwordVerificationText = decryptData(
-        Buffer.from(encryptionJson.password_verification_cipher_text, "base64"),
-        aesKey,
-        Uint8Array.from(encryptionJson.iv),
-      ).toString();
-      if (
-        passwordVerificationText ===
-        encryptionJson.password_verification_plaintext
-      ) {
-        verifiedKey = aesKey;
-        break;
-      }
-    }
+    const decryptedText = decryptData(
+      Buffer.from(encryptionJson.cipher_text, "base64"),
+      thisAesKey,
+      Uint8Array.from(encryptionJson.iv),
+    ).toString();
 
-    // Verify password
-    if (verifiedKey !== undefined) {
-      // Decrypt content if password is correct
-      const decryptedText = decryptData(
-        Buffer.from(encryptionJson.cipher_text, "base64"),
-        verifiedKey,
-        Uint8Array.from(encryptionJson.iv),
-      ).toString();
-
-      setDecryptedText(decryptedText);
-    }
+    setDecryptedText(decryptedText);
   }
 
   if (!decryptedText) {
