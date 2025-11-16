@@ -15,7 +15,8 @@ export default function Page() {
         fetched from the server and decrypted in the browser.
       </p>
       <p>
-        The password for the test file is `91SY):[QC|xKG~`pzj1R?No9wRsl)TNX`.
+        The password for the test file is{" "}
+        <code className="bg-gray-700">91SY):[QC|xKG~`pzj1R?No9wRsl)TNX</code>.
       </p>
       <EncryptedContent
         encryptedSourceURL="/encrypted-content/test_encrypted.json"
@@ -27,7 +28,10 @@ export default function Page() {
         keyList={keyList}
         addKeyToList={addKeyToList}
       />
-      <p>The password for this file is `hello`.</p>
+      <p>
+        The password for this file is <code className="bg-gray-700">hello</code>
+        .
+      </p>
       <EncryptedContent
         encryptedSourceURL="/encrypted-content/odd_password_length.json"
         keyList={keyList}
