@@ -12,9 +12,7 @@ export const cachedFetch: typeof fetch = async (input, init) => {
   const url = input.toString();
   const historyEntry = requestHistory.get(url);
   if (historyEntry !== undefined) {
-    console.log("Cache hit!");
     if (Date.now() > historyEntry.lastAccessed + CACHE_DURATION) {
-      console.log("Cache expired!");
       // If cache is expired, remove entry
       requestHistory.delete(url);
     } else {
@@ -22,7 +20,6 @@ export const cachedFetch: typeof fetch = async (input, init) => {
       return cloneResponsePromise(historyEntry.response);
     }
   }
-  console.log("Cache miss!");
   const response = fetch(input, init);
   requestHistory.set(url, {
     response,
