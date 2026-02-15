@@ -9,6 +9,12 @@ const CACHE_DURATION = 1000 * 60 * 5; // 5 minutes
 
 const requestHistory: Cache = new Map<RequestInfo | URL, CacheEntry>();
 export const cachedFetch: typeof fetch = async (input, init) => {
+  const method = init?.method ? init.method.toUpperCase() : "GET";
+  if (method !== "GET") {
+    // Only cache GET requests
+    return fetch(input, init);
+  }
+
   const url = input.toString();
   const historyEntry = requestHistory.get(url);
   if (historyEntry !== undefined) {
