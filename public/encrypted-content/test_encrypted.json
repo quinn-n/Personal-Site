@@ -1,0 +1,8 @@
+{
+  "iv": [
+    16, 52, 125, 132, 197, 83, 101, 157, 30, 98, 84, 131, 166, 75, 26, 138
+  ],
+  "cipher_text": "0H+WYk89fR/CEDLNGjNrEw==",
+  "password_verification_cipher_text": "jd49NFpjysLJzXplqOW5dA==",
+  "password_verification_plaintext": "Password correct"
+}

@@ -1,0 +1,8 @@
+{
+  "iv": [
+    243, 56, 164, 15, 163, 22, 138, 141, 95, 67, 109, 160, 169, 209, 11, 23
+  ],
+  "cipher_text": "lQlyM6AwGFoeh90TJf7IzjvnJdIj0ti6PGzrhGre1Nw=",
+  "password_verification_cipher_text": "MC6dROdabJijuFwQfxwVPA==",
+  "password_verification_plaintext": "Password correct"
+}
