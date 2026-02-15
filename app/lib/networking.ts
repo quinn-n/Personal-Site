@@ -31,6 +31,14 @@ export const cachedFetch: typeof fetch = async (input, init) => {
     response,
     lastAccessed: Date.now(),
   });
+
+  // If the response is not ok, remove it from the cache
+  response.then((res) => {
+    if (!res.ok) {
+      requestHistory.delete(url);
+    }
+  });
+
   return cloneResponsePromise(response);
 };
 
