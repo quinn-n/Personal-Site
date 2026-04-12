@@ -17,7 +17,6 @@ export default [
       globals: { ...globals.browser, ...globals.node, ...globals.es2021 },
     },
   },
-  pluginJs.configs.recommended,
   ...tseslint.configs.strict,
   ...next,
   {
@@ -27,6 +26,7 @@ export default [
       "out/**",
       "build/**",
       "next-env.d.ts",
+      "eslint.config.*js",
     ],
   },
 ];
