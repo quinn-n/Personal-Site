@@ -14,8 +14,6 @@ const NAV_LINKS = [
 
 type TopNavProps = { className?: string } & React.ComponentProps<"div">;
 
-// https://github.com/jsx-eslint/eslint-plugin-react/issues/3284
-// eslint-disable-next-line react/prop-types
 export function TopNav({ className, ...otherProps }: TopNavProps) {
   const pathname = usePathname();
 

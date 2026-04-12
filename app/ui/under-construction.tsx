@@ -1,11 +1,16 @@
 "use client";
 import type { ImageInfo } from "@/app/ui/images";
 import Image from "next/image";
-import React from "react";
+import { useState } from "react";
 
 export function UnderConstruction() {
-  const image = IMAGE_INFO[Math.floor(Math.random() * IMAGE_INFO.length)];
-  const title = image.titles[Math.floor(Math.random() * image.titles.length)];
+  const [image] = useState(
+    () => IMAGE_INFO[Math.floor(Math.random() * IMAGE_INFO.length)],
+  );
+  const [title] = useState(
+    () => image.titles[Math.floor(Math.random() * image.titles.length)],
+  );
+
   return (
     <div className="flex flex-col justify-center items-center w-full p-16 sm:p-32">
       <h1 className="text-4xl font-bold text-center">Under Construction</h1>
