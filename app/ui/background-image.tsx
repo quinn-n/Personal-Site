@@ -1,11 +1,15 @@
 "use client";
 import type { ImageInfo } from "@/app/ui/images";
 import Image from "next/image";
-import React from "react";
+import { useState } from "react";
 
 export function BackgroundImage() {
-  const image = IMAGE_INFO[Math.floor(Math.random() * IMAGE_INFO.length)];
-  const title = image.titles[Math.floor(Math.random() * image.titles.length)];
+  const [image] = useState(
+    () => IMAGE_INFO[Math.floor(Math.random() * IMAGE_INFO.length)],
+  );
+  const [title] = useState(
+    () => image.titles[Math.floor(Math.random() * image.titles.length)],
+  );
 
   return (
     <div className="relative h-full w-full">
