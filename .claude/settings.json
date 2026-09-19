@@ -1,0 +1,180 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "permissions": {
+    "allow": [
+      "Bash(node -v)",
+      "Bash(npm -v)",
+      "Bash(npx vercel --version)",
+      "Bash(npx vercel whoami)",
+      "Bash(npx vercel whoami:*)",
+      "Bash(npx vercel list)",
+      "Bash(npx vercel list:*)",
+      "Bash(npx vercel inspect:*)",
+      "Bash(npx vercel logs:*)",
+      "Bash(npx vercel httpstat:*)",
+      "Bash(npx vercel promote status)",
+      "Bash(npx vercel promote status:*)",
+      "Bash(npx vercel rollback status)",
+      "Bash(npx vercel rollback status:*)",
+      "Bash(npx vercel env ls)",
+      "Bash(npx vercel env ls:*)",
+      "Bash(npx vercel project ls)",
+      "Bash(npx vercel project ls:*)",
+      "Bash(npx vercel domains ls)",
+      "Bash(npx vercel domains ls:*)"
+    ],
+    "ask": [
+      "Bash(sudo:*)",
+      "Bash(npm install:*)",
+      "Bash(npm uninstall:*)",
+      "Bash(git push:*)",
+      "Bash(gh pr create:*)",
+      "Bash(gh pr merge:*)"
+    ],
+    "deny": [
+      "Read(.env)",
+      "Edit(.env)",
+      "Read(.env.local)",
+      "Edit(.env.local)",
+      "Read(.env.*.local)",
+      "Edit(.env.*.local)",
+      "Read(.vercel/**)",
+      "Edit(.vercel/**)",
+      "Read(content-private/**)",
+      "Edit(content-private/**)",
+      "Read(*.pem)",
+      "Edit(*.pem)",
+      "Read(*.p12)",
+      "Edit(*.p12)",
+      "Read(*.key)",
+      "Edit(*.key)",
+      "Bash(vercel)",
+      "Bash(vercel:*)",
+      "Bash(npx vercel)",
+      "Bash(npx vercel deploy)",
+      "Bash(npx vercel deploy:*)",
+      "Bash(npx vercel redeploy)",
+      "Bash(npx vercel redeploy:*)",
+      "Bash(npx vercel remove)",
+      "Bash(npx vercel remove:*)",
+      "Bash(npx vercel rm)",
+      "Bash(npx vercel rm:*)",
+      "Bash(npx vercel env add)",
+      "Bash(npx vercel env add:*)",
+      "Bash(npx vercel env rm)",
+      "Bash(npx vercel env rm:*)",
+      "Bash(npx vercel env update)",
+      "Bash(npx vercel env update:*)",
+      "Bash(npx vercel env pull)",
+      "Bash(npx vercel env pull:*)",
+      "Bash(npx vercel env run)",
+      "Bash(npx vercel env run:*)",
+      "Bash(npx vercel link)",
+      "Bash(npx vercel link:*)",
+      "Bash(npx vercel pull)",
+      "Bash(npx vercel pull:*)",
+      "Bash(npx vercel buy)",
+      "Bash(npx vercel buy:*)",
+      "Bash(npx vercel api)",
+      "Bash(npx vercel api:*)",
+      "Bash(npx vercel tokens)",
+      "Bash(npx vercel tokens:*)",
+      "Bash(npx vercel cache)",
+      "Bash(npx vercel cache:*)",
+      "Bash(npx vercel firewall)",
+      "Bash(npx vercel firewall:*)",
+      "Bash(npx vercel redirects)",
+      "Bash(npx vercel redirects:*)",
+      "Bash(npx vercel routes)",
+      "Bash(npx vercel routes:*)",
+      "Bash(npx vercel git)",
+      "Bash(npx vercel git:*)",
+      "Bash(npx vercel teams)",
+      "Bash(npx vercel teams:*)",
+      "Bash(npx vercel integration)",
+      "Bash(npx vercel integration:*)",
+      "Bash(npx vercel mcp)",
+      "Bash(npx vercel mcp:*)",
+      "Bash(npx vercel agent)",
+      "Bash(npx vercel agent:*)",
+      "Bash(npx vercel alias set:*)",
+      "Bash(npx vercel alias rm:*)",
+      "Bash(npx vercel dns add:*)",
+      "Bash(npx vercel dns rm:*)",
+      "Bash(npx vercel domains add:*)",
+      "Bash(npx vercel domains rm:*)",
+      "Bash(npx vercel domains buy:*)",
+      "Bash(npx vercel domains move:*)",
+      "Bash(npx vercel domains transfer-in:*)",
+      "Bash(npx vercel certs issue)",
+      "Bash(npx vercel certs issue:*)",
+      "Bash(npx vercel certs rm)",
+      "Bash(npx vercel certs rm:*)",
+      "Bash(npm publish)",
+      "Bash(npm publish:*)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/protect-secrets.sh",
+            "timeout": 15
+          }
+        ]
+      },
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/guard-bash.sh",
+            "timeout": 15
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/format-on-edit.sh",
+            "timeout": 60
+          },
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/client-safety-lint.sh",
+            "timeout": 30
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/no-secrets-in-diff.sh",
+            "timeout": 60
+          }
+        ]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "\"$CLAUDE_PROJECT_DIR\"/.claude/hooks/no-secrets-in-diff.sh",
+            "timeout": 60
+          }
+        ]
+      }
+    ]
+  }
+}
