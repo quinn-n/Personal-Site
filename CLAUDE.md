@@ -64,22 +64,26 @@ if [ -n "$CI" ]; then npm run test:e2e; else nice -n 19 npm run test:e2e; fi    
 Model policy: design, planning, implementation, and fixing run on **opus**; testers, reviewers, the fact-checker, `test-engineer`, and `deploy-doctor` run on **sonnet**. **Only the four Build agents have edit access** — every other agent is read-only by design.
 
 **Design · plan · verify (read-only)**
+
 - `feature-designer` — turns an idea or content change into a testable spec: routes touched, RSC/client boundary, data shape, a11y acceptance criteria, responsive behavior, static-rendering impact.
 - `site-planner` — ordered tasks with `Owns` file sets, file-disjoint batches, the Vitest/Playwright test plan, reviewer routing, and a clustered `[VERIFY]` list. Stops before code.
 - `fact-checker` — confirms or refutes `[VERIFY]` items against installed code and current sources; returns CONFIRMED / REFUTED / UNVERIFIABLE with evidence.
 - `upgrade-planner` — re-derives which modernization steps are already done, picks the next one, scopes it to a single concern, lists commands/codemods/rollback/risks.
 
 **Build (edit access — the only agents that write files)**
+
 - `site-implementer` — executes ONE assigned track (**ui** / **logic-crypto** / **tooling-config**), stays strictly in its `Owns` files, writes its slice's tests, keeps the gate green, loops to APPROVED.
 - `test-engineer` — backfills meaningful Vitest/Playwright/axe coverage; edits test files and test config only.
 - `code-refactorer` — behavior-preserving cleanup; green gate before **and** after.
 - `bug-fixer` — reproduce → root cause → **failing regression test first** → minimal fix → prove green.
 
 **Testers (read-only; each closes with a "could not verify from here" list)**
+
 - `unit-tester` — runs `vitest run` + `npm run typecheck`, reports failures with file/line, separates product bugs from test bugs.
 - `e2e-a11y-tester` — Playwright + `@axe-core/playwright` against the **production build** on port 3100 (or a preview via `PLAYWRIGHT_BASE_URL`); console errors, image loads, `incomplete` axe results.
 
 **Review board (read-only; verdicts)**
+
 - `nextjs-reviewer` — RSC/client boundaries, hydration-unsafe patterns, metadata correctness, `next/image`, and that **every route is still `○`**.
 - `code-quality-reviewer` — TS/React idioms, Biome-vs-ESLint rule ownership, suppression hygiene, and **tooling/upgrade-PR review**.
 - `a11y-ux-reviewer` — WCAG 2.2 AA by hand where axe cannot reach: semantics, names, focus order/management, keyboard paths, reflow, target size.
@@ -90,6 +94,7 @@ Model policy: design, planning, implementation, and fixing run on **opus**; test
 ## Skills (15) · rules (5)
 
 Skills (`.claude/skills/<name>/SKILL.md`) — invoke the one that owns the question:
+
 - `quality-gate` — the gate definition, the preflight, and the static-route assertion.
 - `nextjs-app-router-conventions` — RSC boundaries, metadata, routing, images, Next 16 defaults.
 - `hydration-safety` — mismatch diagnosis and the fix order; no nondeterminism in render.
@@ -117,7 +122,7 @@ Path-scoped rules (`.claude/rules/*.md`, loaded when matching files are touched)
 Always, in parallel: **`nextjs-reviewer` + `code-quality-reviewer` + `a11y-ux-reviewer`**.
 
 | Touched surface | Add |
-|---|---|
+| --- | --- |
 | `app/lib/crypto/**`, `app/ui/encrypted-content.tsx`, `scripts/encrypt-content.*`, `public/encrypted-content/**`, headers/CSP, `package.json` deps, anything env/secret-adjacent | `security-reviewer` |
 | UI dependencies, images, fonts, client-component surface, bundle-affecting changes | `performance-reviewer` (advisory) |
 | `.github/**`, `package.json` scripts, `biome.json`, `eslint.config.mjs`, `tsconfig.json`, `.pre-commit-config.yaml` | `code-quality-reviewer` in tooling-PR mode |
@@ -156,8 +161,8 @@ Always, in parallel: **`nextjs-reviewer` + `code-quality-reviewer` + `a11y-ux-re
 
 ## Project specifics (fill these in)
 
-- Production domain — `<e.g. example.com>` (drives `metadataBase`, and the HSTS/indexability checks that are only true in production)
-- Vercel org/project + plan — `<org/project · Hobby | Pro>` (image transformation quotas, Password Protection availability)
+- Production domain — `quinnneufeld.com` (drives `metadataBase`, and the HSTS/indexability checks that are only true in production)
+- Vercel org/project + plan — `<quinn-n/personal-site · Hobby>` (image transformation quotas, Password Protection availability)
 - Deployment Protection level — `<verify in the Vercel project settings at use-time>`
 - MUI major target: 9 — browser floor Chrome 117 / Edge 121 / Firefox 121 / Safari 17.0. `7.3.x` LTS is the documented alternative; the full floor table for both options lives in `styling-mui-tailwind`.
 - Encrypted content holds real secrets: yes — crypto checklist items 1–7 are **blocking Must-fix**, and any real content behind encryption needs a generated high-entropy passphrase. `security-reviewer` and `/security-review` read this line at use-time.
