@@ -34,7 +34,7 @@ is_allowlisted() {
     .gitleaks.toml)             return 0 ;;
     .env.example)               return 0 ;;
     .claude/*)                  return 0 ;;
-    CLAUDE.md|README.md|BLUEPRINT.md) return 0 ;;
+    CLAUDE.md)                  return 0 ;;
   esac
   return 1
 }
